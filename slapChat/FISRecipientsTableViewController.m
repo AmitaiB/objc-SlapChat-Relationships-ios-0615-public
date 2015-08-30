@@ -46,6 +46,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseID" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.textLabel.text = self.managedRecipientObjects[indexPath.row];
     
     return cell;
 }

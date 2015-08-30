@@ -2,22 +2,18 @@
 //  Message.m
 //  slapChat
 //
-//  Created by Joe Burgess on 6/30/14.
-//  Copyright (c) 2014 Joe Burgess. All rights reserved.
+//  Created by Amitai Blickstein on 8/30/15.
+//  Copyright (c) 2015 Joe Burgess. All rights reserved.
 //
 
 #import "Message.h"
+#import "NSManagedObject.h"
 
 
 @implementation Message
 
 @dynamic content;
 @dynamic createdAt;
-
-+(instancetype)messageWithContext:(NSManagedObjectContext *)context
-{
-    Message *newMessage = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:context];
-    return newMessage;
-}
+@dynamic addressedTo;
 
 @end
