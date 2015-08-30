@@ -1,19 +1,19 @@
 //
-//  FISTableViewController.m
+//  FISMessagesTableViewController.m
 //  slapChat
 //
 //  Created by Joe Burgess on 6/27/14.
 //  Copyright (c) 2014 Joe Burgess. All rights reserved.
 //
 
-#import "FISTableViewController.h"
+#import "FISMessagesTableViewController.h"
 #import "Message.h"
 
-@interface FISTableViewController ()
+@interface FISMessagesTableViewController ()
 
 @end
 
-@implementation FISTableViewController
+@implementation FISMessagesTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

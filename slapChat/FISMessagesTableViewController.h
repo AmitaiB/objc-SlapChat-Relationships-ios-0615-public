@@ -1,5 +1,5 @@
 //
-//  FISTableViewController.h
+//  FISMessagesTableViewController.h
 //  slapChat
 //
 //  Created by Joe Burgess on 6/27/14.
@@ -10,7 +10,7 @@
 #import "FISDataStore.h"
 
 
-@interface FISTableViewController : UITableViewController
+@interface FISMessagesTableViewController : UITableViewController
 
 
 @property (strong, nonatomic) NSArray *managedMessageObjects;
