@@ -8,6 +8,7 @@
 
 #import "FISDataStore.h"
 #import "Message.h"
+#import "Recipient.h"
 
 @implementation FISDataStore
 @synthesize managedObjectContext = _managedObjectContext;
@@ -92,19 +93,39 @@
 
 - (void)generateTestData
 {
+    Recipient *alice = [NSEntityDescription insertNewObjectForEntityForName:@"Recipient" inManagedObjectContext:self.managedObjectContext];
+    alice.name = @"Alice";
+    
+    Recipient *bob = [NSEntityDescription insertNewObjectForEntityForName:@"Recipient" inManagedObjectContext:self.managedObjectContext];
+    bob.name = @"Bob";
+    
+    Recipient *carlos = [NSEntityDescription insertNewObjectForEntityForName:@"Recipient" inManagedObjectContext:self.managedObjectContext];
+    carlos.name = @"Carlos";
+    
+    
     Message *messageOne = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.managedObjectContext];
     
-    messageOne.content = @"Message 1";
+    messageOne.content = @"Message 1: [Alice] \"Hey, Bob, what's a Liger?\"";
     messageOne.createdAt = [NSDate date];
+    messageOne.addressedTo = bob;
+    
     
     Message *messageTwo = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.managedObjectContext];
-    messageTwo.content = @"Message 2";
+    messageTwo.content = @"Message 2: [Bob] “It’s pretty much my favorite animal. It’s like a lion and a tiger mixed… bred for its skills in magic.”";
     messageTwo.createdAt = [NSDate date];
+    messageTwo.addressedTo = alice;
     
     Message *messageThree = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.managedObjectContext];
     
-    messageThree.content = @"Message 3";
-    messageThree.createdAt = [NSDate date];
+    messageThree.content = @"Message 3: [Lisa] \"I\'m more than a spambot! Our love was REAL!\"";
+    messageThree.createdAt = [NSDate distantFuture];
+    messageThree.addressedTo = carlos;
+    
+    Message *messageFour = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:self.managedObjectContext];
+    messageFour.content = @"Message 4: [Alice] \"Sounds like nothing can kill a liger!\"";
+    messageFour.createdAt = [NSDate date];
+    messageFour.addressedTo = bob;
+    
     
     [self saveContext];
     [self fetchData];

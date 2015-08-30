@@ -22,9 +22,9 @@
 
 @interface Recipient (CoreDataGeneratedAccessors)
 
-- (void)addAddressedByObject:(Message *)value;
-- (void)removeAddressedByObject:(Message *)value;
-- (void)addAddressedBy:(NSSet *)values;
-- (void)removeAddressedBy:(NSSet *)values;
+- (void)addAddressedByObject:(Message    * )value;
+- (void)removeAddressedByObject:(Message * )value;
+- (void)addAddressedBy:(NSSet            * )values;
+- (void)removeAddressedBy:(NSSet         * )values;
 
 @end
