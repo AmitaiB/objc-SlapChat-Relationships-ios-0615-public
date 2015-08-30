@@ -18,4 +18,12 @@
 @dynamic twitterHandle;
 @dynamic addressedBy;
 
++(instancetype)recipientWithContext:(NSManagedObjectContext *)context
+{
+    Recipient *newRecipient = [NSEntityDescription insertNewObjectForEntityForName:@"Recipient" inManagedObjectContext:context];
+    return newRecipient;
+}
+
+
+
 @end

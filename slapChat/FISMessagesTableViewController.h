@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FISDataStore.h"
 
-
 @interface FISMessagesTableViewController : UITableViewController
-
 
 @property (strong, nonatomic) NSArray *managedMessageObjects;
 @property (strong, nonatomic) FISDataStore *store;

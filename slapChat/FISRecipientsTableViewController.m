@@ -7,12 +7,23 @@
 //
 
 #import "FISRecipientsTableViewController.h"
+#import "Recipient.h"
 
 @interface FISRecipientsTableViewController ()
 
 @end
 
 @implementation FISRecipientsTableViewController
+
+//    //Is this necessary???
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//    self = [super initWithStyle:style];
+//    if (self) {
+//            // Custom initialization
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,7 +35,8 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
+    [self.sharedStore fetchData];
+    [self.tableView reloadData];
 }
 
 
@@ -42,7 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.managedRecipientObjects.count;
+    return [self.sharedStore.recipients count];
 }
 
 
@@ -50,7 +62,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellReuseID" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = self.managedRecipientObjects[indexPath.row];
+    Recipient *eachRecipient = self.sharedStore.recipients[indexPath.row];
+    cell.textLabel.text = eachRecipient.name;
     
     return cell;
 }

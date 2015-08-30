@@ -22,6 +22,9 @@
 
 @interface Recipient (CoreDataGeneratedAccessors)
 
++(instancetype)recipientWithContext:(NSManagedObjectContext *)context;
+
+
 - (void)addAddressedByObject:(Message    * )value;
 - (void)removeAddressedByObject:(Message * )value;
 - (void)addAddressedBy:(NSSet            * )values;
