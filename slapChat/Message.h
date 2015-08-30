@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSManagedObject *addressedTo;
 
++(instancetype)messageWithContext:(NSManagedObjectContext *)context;
+
 @end

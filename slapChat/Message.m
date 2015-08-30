@@ -7,13 +7,17 @@
 //
 
 #import "Message.h"
-#import "NSManagedObject.h"
-
 
 @implementation Message
 
 @dynamic content;
 @dynamic createdAt;
 @dynamic addressedTo;
+
++(instancetype)messageWithContext:(NSManagedObjectContext *)context
+{
+    Message *newMessage = [NSEntityDescription insertNewObjectForEntityForName:@"Message" inManagedObjectContext:context];
+    return newMessage;
+}
 
 @end
