@@ -68,14 +68,14 @@
     
     NSSortDescriptor *alphabeticalSorter = [NSSortDescriptor sortDescriptorWithKey:@"a" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     NSSortDescriptor *createdAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES];
-    recipientsRequest.sortDescriptors = @[alphabeticalSorter, createdAtSorter];
+//    recipientsRequest.sortDescriptors = @[alphabeticalSorter, createdAtSorter];
     
         //Fetch the messages
     NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
     messagesRequest.sortDescriptors = @[createdAtSorter];
 
-    self.recipients = [self.managedObjectContext executeFetchRequest:recipientsRequest error:nil];
     self.messages = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
+    self.recipients = [self.managedObjectContext executeFetchRequest:recipientsRequest error:nil];
     
     
 
