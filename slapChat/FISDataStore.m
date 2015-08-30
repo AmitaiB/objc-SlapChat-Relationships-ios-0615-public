@@ -63,14 +63,23 @@
 
 - (void)fetchData
 {
-    NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
-
+        //Fetch the recipients (there can be recipients without messages, but not messages without recipients.
+    NSFetchRequest *recipientsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Recipient"];
+    
+    NSSortDescriptor *alphabeticalSorter = [NSSortDescriptor sortDescriptorWithKey:@"a" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     NSSortDescriptor *createdAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES];
+    recipientsRequest.sortDescriptors = @[alphabeticalSorter, createdAtSorter];
+    
+        //Fetch the messages
+    NSFetchRequest *messagesRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
     messagesRequest.sortDescriptors = @[createdAtSorter];
 
+    self.recipients = [self.managedObjectContext executeFetchRequest:recipientsRequest error:nil];
     self.messages = [self.managedObjectContext executeFetchRequest:messagesRequest error:nil];
+    
+    
 
-    if ([self.messages count]==0) {
+    if ([self.recipients count]==0) {
         [self generateTestData];
     }
 }
