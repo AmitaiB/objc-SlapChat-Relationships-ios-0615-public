@@ -14,4 +14,5 @@
 @property (nonatomic, strong) FISDataStore *sharedStore;
 @property (nonatomic, strong) NSArray *managedRecipientObjects;
 
+
 @end

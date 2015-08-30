@@ -66,7 +66,7 @@
         //Fetch the recipients (there can be recipients without messages, but not messages without recipients.
     NSFetchRequest *recipientsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Recipient"];
     
-    NSSortDescriptor *alphabeticalSorter = [NSSortDescriptor sortDescriptorWithKey:@"a" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSSortDescriptor *alphabeticalSorter = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     NSSortDescriptor *createdAtSorter = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES];
 //    recipientsRequest.sortDescriptors = @[alphabeticalSorter, createdAtSorter];
     
