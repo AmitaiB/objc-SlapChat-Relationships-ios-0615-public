@@ -24,8 +24,6 @@
     return self;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,13 +31,6 @@
     self.store = [FISDataStore sharedDataStore];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressedTo.name = %@", self.recipientName];
     self.store.filteredMessages = [self.store.messages filteredArrayUsingPredicate:(NSPredicate *)predicate];
-        //???    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressedTo.name MATCHES %@", self.recipientName];
-//    NSFetchRequest *recipientsMessagesOnlyRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
-//    recipientsMessagesOnlyRequest.predicate = predicate;
-//    NSError *error = nil;
-//    self.store.filteredMessages = [self.store.managedObjectContext executeFetchRequest:recipientsMessagesOnlyRequest error:&error];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,6 +73,14 @@
     // Configure the cell...
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIAlertController *fullMessageController = [UIAlertController alertControllerWithTitle:@"Full message" message:cell.textLabel.text preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [fullMessageController addAction:okAction];
+    [self presentViewController:fullMessageController animated:YES completion:nil];
 }
 
 /*
