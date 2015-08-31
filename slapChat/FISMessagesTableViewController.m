@@ -31,11 +31,14 @@
     [super viewDidLoad];
 
     self.store = [FISDataStore sharedDataStore];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressedTo.name MATCHES %@", self.recipientName];
-    NSFetchRequest *recipientsMessagesOnlyRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
-    recipientsMessagesOnlyRequest.predicate = predicate;
-    NSError *error = nil;
-    self.store.filteredMessages = [self.store.managedObjectContext executeFetchRequest:recipientsMessagesOnlyRequest error:&error];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressedTo.name = %@", self.recipientName];
+    self.store.filteredMessages = [self.store.messages filteredArrayUsingPredicate:(NSPredicate *)predicate];
+        //???    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"addressedTo.name MATCHES %@", self.recipientName];
+//    NSFetchRequest *recipientsMessagesOnlyRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
+//    recipientsMessagesOnlyRequest.predicate = predicate;
+//    NSError *error = nil;
+//    self.store.filteredMessages = [self.store.managedObjectContext executeFetchRequest:recipientsMessagesOnlyRequest error:&error];
+    
     
 }
 
