@@ -34,8 +34,9 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", self.recipientName];
     NSFetchRequest *recipientsMessagesOnlyRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
     recipientsMessagesOnlyRequest.predicate = predicate;
+    NSError *error = nil;
+    self.store.filteredMessages = [self.store.managedObjectContext executeFetchRequest:recipientsMessagesOnlyRequest error:&error];
     
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -63,7 +64,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.store.messages count];
+    return [self.store.filteredMessages count];
 }
 
 
@@ -71,7 +72,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"basiccell" forIndexPath:indexPath];
     
-    Message *eachMessage = self.store.messages[indexPath.row];
+    Message *eachMessage = self.store.filteredMessages[indexPath.row];
     
     cell.textLabel.text = eachMessage.content;
     

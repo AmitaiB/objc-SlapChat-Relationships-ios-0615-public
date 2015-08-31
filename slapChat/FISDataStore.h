@@ -13,8 +13,9 @@
 
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSArray *messages;
 @property (nonatomic, strong) NSArray *recipients;
+@property (strong, nonatomic) NSArray *messages;
+@property (nonatomic, strong) NSArray *filteredMessages;
 
 + (instancetype) sharedDataStore;
 
