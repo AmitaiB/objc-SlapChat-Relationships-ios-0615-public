@@ -31,6 +31,10 @@
     [super viewDidLoad];
 
     self.store = [FISDataStore sharedDataStore];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", self.recipientName];
+    NSFetchRequest *recipientsMessagesOnlyRequest = [NSFetchRequest fetchRequestWithEntityName:@"Message"];
+    recipientsMessagesOnlyRequest.predicate = predicate;
+    
 
 }
 

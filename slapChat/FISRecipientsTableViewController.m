@@ -7,6 +7,7 @@
 //
 
 #import "FISRecipientsTableViewController.h"
+#import "FISMessagesTableViewController.h"
 #import "Recipient.h"
 
 @interface FISRecipientsTableViewController ()
@@ -115,12 +116,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
+    FISMessagesTableViewController *destinationVC = segue.destinationViewController;
     
     if ([NSStringFromClass([sender class]) isEqualToString:@"UITableViewCell"]) {
         NSLog(@"sender is: %@", [sender description]);
         UITableViewCell *cell = sender;
-        
+        destinationVC.recipientName = cell.textLabel.text;
     }
     
 }

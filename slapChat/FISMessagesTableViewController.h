@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSArray *managedMessageObjects;
 @property (strong, nonatomic) FISDataStore *store;
-@property (nonatomic, strong) Recipient *recipient;
+@property (nonatomic, strong) NSString *recipientName;
 
 
 @end
